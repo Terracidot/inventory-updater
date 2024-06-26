@@ -5,7 +5,6 @@ from datetime import datetime
 
 stock_code_list = []
 stock_qty_list = []
-count = 0
 
 def timer(i):
     current_time = datetime.now().strftime("%H:%M:%S")
