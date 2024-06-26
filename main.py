@@ -29,13 +29,13 @@ with sync_playwright() as p:
     page0 = browser0.new_page()
 
     print('Logging into your_website...')
-    page0.goto('https://path_of_the_webpage.com/Landing/ResellerDefault.aspx')
+    page0.goto('https://path_of_the_webpage.com/')
     page0.fill('input#ctl00_cphFullWidthDocumentContainer_LoginControl_txtUserName_vertical', 'your_username')
     page0.fill('input#ctl00_cphFullWidthDocumentContainer_LoginControl_txtPassword_vertical', 'your_password')
     page0.get_by_role('link', name="Login").click()
     print('Sage login successful!')
 
-    page0.goto('https://path_of_the_webpage.com/Reports/HTMLReportFilter.aspx?encqry=POVm97O0+iW4ekO2VNbRHB7RwBkSyDgQ+EU9o3OiQjdJRwHFgKPoVh8Rs5P82XZ4')
+    page0.goto('https://path_of_the_webpage.com/')
     page0.get_by_role('link', name='View Report').click()
 
     table_data = page0.locator('#reportContent')
@@ -45,7 +45,8 @@ with sync_playwright() as p:
     rows = table_data.get_by_role('row')
     print('Number of stock items:', rows.count())
     print('Appending stock items...')
-    
+
+    # iterate through all rows and append to list
     for i in rows.all():
         try:
             stock_code_list.append(i.locator('//td[1]').inner_text())
@@ -88,21 +89,21 @@ with sync_playwright() as p:
 
     print('Login successful!')
 
-    page1.get_by_role('main').get_by_role('link', name="Soundcom Shop").click()
+    page1.get_by_role('main').get_by_role('link', name="Shop").click()
     page1.get_by_role('link', name="Products").click()
 
     print('Starting stock quantity update...')
 
-    update_stock('ACT311(II)', 8687)
-    update_stock('ACT312(II)', 10228)
-    update_stock('ACT32H(8B)', 10254)
-    update_stock('ACT32T(8B)', 10255)
-    update_stock('ACT343', 10229)
-    update_stock('BK12V4.5', 10668)
-    update_stock('DPM3', 10669)
-    update_stock('ELA62', 10252)
-    update_stock('MA100', 10209)
-    update_stock('MA200', 10222)
+    update_stock('stock_code_0', 8687)
+    update_stock('stock_code_1', 10228)
+    update_stock('stock_code_2', 10254)
+    update_stock('stock_code_3', 10255)
+    update_stock('stock_code_4', 10229)
+    update_stock('stock_code_5', 10668)
+    update_stock('stock_code_6', 10669)
+    update_stock('stock_code_7', 10252)
+    update_stock('stock_code_8', 10209)
+    update_stock('stock_code_9', 10222)
     
     print('Stock update complete! Closing in 2 minutes...')
 
