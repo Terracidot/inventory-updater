@@ -1,4 +1,4 @@
-# stock-updater
+# Inventory-updater
 ### Script used to copy data from one website and transfer it to another with the playwright library.
 ### Specifically created for updating stock quanity levels on an online shop, according to values from an accounting website.
 
